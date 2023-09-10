@@ -85,15 +85,26 @@ def smiley(n):
 	elif n <= 3: return ":/"
 	else: return ":("
 
+hint = """
+
+To create a username use:
+    /tripcode [username]#[digits_to_hash]
+
+Your username will be displayed with the unique hash of the digits. 
+
+To send a message WITHOUT the sign use /t or /tsign prefix:
+    /t [message]
+"""
+
 format_strs = {
 	types.CUSTOM: "{text}",
 	types.SUCCESS: "☑",
 	types.BOOLEAN_CONFIG: lambda enabled, **_:
 		"<b>{description!x}</b>: " + (enabled and "enabled" or "disabled"),
 
-	types.CHAT_JOIN: em("You joined the chat!"),
+	types.CHAT_JOIN: em("You joined the chat!"+hint),
 	types.CHAT_LEAVE: em("You left the chat!"),
-	types.USER_IN_CHAT: em("You're already in the chat."),
+	types.USER_IN_CHAT: em("You're already in the chat."+hint),
 	types.USER_NOT_IN_CHAT: em("You're not in the chat yet. Use /start to join!"),
 	types.GIVEN_COOLDOWN: lambda deleted, **_:
 		em( "You've been handed a cooldown of {duration!d} for this message"+
@@ -131,7 +142,7 @@ format_strs = {
 	types.ERR_INVALID_TRIP_FORMAT:
 		em("Given tripcode is not valid, the format is ")+
 		"<code>name#pass</code>" + em("."),
-	types.ERR_NO_TRIPCODE: em("You don't have a tripcode set."),
+	types.ERR_NO_TRIPCODE: em("You don't have a tripcode set."+hint),
 	types.ERR_MEDIA_LIMIT: em("You can't send media or forward messages at this time, try again later."),
 
 	types.USER_INFO: lambda warnings, cooldown, **_:
