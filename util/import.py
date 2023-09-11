@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
-import os
-import logging
-import yaml
-import sys
 import json
+import logging
+import os
+import sys
 from datetime import datetime, timedelta
 
 sys.path.append(os.path.join(os.path.abspath(os.path.dirname(__file__)), ".."))
 from secretlounge_ng.globals import *
-from secretlounge_ng.database import User, SystemConfig, JSONDatabase, SQLiteDatabase
+from secretlounge_ng.database import User, SystemConfig
 from secretlounge_ng.__main__ import open_db, load_config
 
+
 def safe_time(n):
-	if n > 2**32:
-		n = 2**32
+	if n > 2 ** 32:
+		n = 2 ** 32
 	return datetime.utcfromtimestamp(n)
+
 
 def usage():
 	print("Import database from legacy secretlounge instances")
 	print("Usage: import.py <config file> <original db>")
+
 
 def main(configpath, importpath):
 	config = load_config(configpath)
@@ -64,6 +66,7 @@ def main(configpath, importpath):
 
 	logging.info("Success.")
 	db.close()
+
 
 if __name__ == "__main__":
 	if len(sys.argv) < 3:

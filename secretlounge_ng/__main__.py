@@ -1,17 +1,19 @@
-import logging
-import yaml
-import threading
-import sys
-import os
 import getopt
+import logging
+import os
+import sys
+import threading
+
+import yaml
 
 from . import core, telegram
-from .globals import *
-from .database import JSONDatabase, SQLiteDatabase
 from .cache import Cache
+from .database import JSONDatabase, SQLiteDatabase
+from .globals import *
 from .util import Scheduler
 
 opts = {}
+
 
 def start_new_thread(func, join=False, args=(), kwargs=None):
 	t = threading.Thread(target=func, args=args, kwargs=kwargs)
@@ -21,11 +23,13 @@ def start_new_thread(func, join=False, args=(), kwargs=None):
 	if join:
 		t.join()
 
+
 def readopt(name):
 	for e in opts:
 		if e[0] == name:
 			return e[1]
 	return None
+
 
 def usage():
 	print("Usage: %s [-q|-d] [-c file]" % sys.argv[0])
@@ -34,6 +38,7 @@ def usage():
 	print("  -q    Quiet, set log level to WARNING")
 	print("  -d    Debug, set log level to DEBUG")
 	print("  -c    Location of config file (default: ./config.yaml)")
+
 
 def load_config(path):
 	with open(path, "r") as f:
@@ -45,6 +50,7 @@ def load_config(path):
 			config["linked_network"] = yaml.safe_load(f)
 
 	return config
+
 
 def open_db(config):
 	type_, args = config["database"][0].lower(), config["database"][1:]
@@ -58,6 +64,7 @@ def open_db(config):
 	else:
 		logging.error("Unknown database type.")
 		exit(1)
+
 
 def main():
 	global opts
@@ -107,6 +114,7 @@ def main():
 		logging.info("Interrupted, exiting")
 		db.close()
 		os._exit(1)
+
 
 if __name__ == "__main__":
 	main()

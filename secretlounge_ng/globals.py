@@ -1,5 +1,6 @@
 from .util import Enum
 
+
 # a few utility functions
 def escape_html(s):
 	ret = ""
@@ -9,9 +10,11 @@ def escape_html(s):
 		ret += c
 	return ret
 
+
 def format_datetime(t):
 	tzinfo = __import__("datetime").timezone.utc
 	return t.replace(tzinfo=tzinfo).strftime("%Y-%m-%d %H:%M UTC")
+
 
 def format_timedelta(d):
 	timedelta = __import__("datetime").timedelta
@@ -23,6 +26,7 @@ def format_timedelta(d):
 		if d >= cmp:
 			return "%d%c" % (d // cmp, char)
 	return "%ds" % d.total_seconds()
+
 
 ## for debugging ##
 def dump(obj, name=None, r=False):
@@ -36,20 +40,23 @@ def dump(obj, name=None, r=False):
 		else:
 			print("%s%s = %r" % (name, e, ev))
 
+
 # Program version
 VERSION = "1.8"
 
 # Ranks
-RANKS = Enum({
-	"admin": 100,
-	"mod": 10,
-	"user": 0,
-	"banned": -10
-})
+RANKS = Enum(
+	{
+		"admin": 100,
+		"mod": 10,
+		"user": 0,
+		"banned": -10
+	}
+)
 
 # Cooldown related
-COOLDOWN_TIME_BEGIN = [1, 5, 25, 120, 720, 4320] # begins with 1m, 5m, 25m, 2h, 12h, 3d
-COOLDOWN_TIME_LINEAR_M = 4320 # continues 7d, 10d, 13d, 16d, ... (linear)
+COOLDOWN_TIME_BEGIN = [1, 5, 25, 120, 720, 4320]  # begins with 1m, 5m, 25m, 2h, 12h, 3d
+COOLDOWN_TIME_LINEAR_M = 4320  # continues 7d, 10d, 13d, 16d, ... (linear)
 COOLDOWN_TIME_LINEAR_B = 10080
 WARN_EXPIRE_HOURS = 7 * 24
 

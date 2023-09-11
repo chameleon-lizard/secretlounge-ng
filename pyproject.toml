@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "secretlounge-ng"
 version = "1.8"
-authors = [{ name="sfan5" }]
+authors = [{ name = "sfan5" }]
 description = "a bot to make an anonymous group chat on Telegram "
 readme = "README.md"
 requires-python = ">=3.7"

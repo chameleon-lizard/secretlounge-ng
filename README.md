@@ -1,9 +1,11 @@
 secretlounge-ng
 ---------------
 
-Rewrite of [secretlounge](https://web.archive.org/web/20200920053736/https://github.com/6697/secretlounge), a bot to make an anonymous group chat on Telegram.
+Rewrite of [secretlounge](https://web.archive.org/web/20200920053736/https://github.com/6697/secretlounge), a bot to
+make an anonymous group chat on Telegram.
 
-The bot accepts messages, pictures, videos, etc. from any user and relays it to all other active users without revealing the author.
+The bot accepts messages, pictures, videos, etc. from any user and relays it to all other active users without revealing
+the author.
 
 ## Setup
 
@@ -102,13 +104,15 @@ indirect ways to determine who wrote a particular message.
 
 *¹*: It is impossible to ascertain this from afar. You have to trust the bot owner either way.
 
-*²*: Sophisticated attacks are possible to track continously active users over a longer timeframe. It is not expected that a human can perform this.
+*²*: Sophisticated attacks are possible to track continously active users over a longer timeframe. It is not expected
+that a human can perform this.
 
 All of these assessments presume a sufficient user population in the bot so that anyone could blend in.
 
 5. **Why don't polls work?**
 
-Telegram bots are able to create new polls and forward messages (including authorship), but they can't forward the poll itself as with other message types.
+Telegram bots are able to create new polls and forward messages (including authorship), but they can't forward the poll
+itself as with other message types.
 Working around this is possible with some disadvantages, but has not been implemented yet.
 
 6. **Is this code maintained?**
@@ -118,5 +122,6 @@ Updates are made either if there's something broken or when the author feels lik
 
 ## Notable forks
 
-* [CatLounge](https://github.com/CatLounge/catlounge-ng-meow) - has numerous new features including specifying cooldown time
+* [CatLounge](https://github.com/CatLounge/catlounge-ng-meow) - has numerous new features including specifying cooldown
+  time
 * [Furry fork](https://github.com/dogmike/secretlounge-ng) - not sure, but there's a bunch of things
