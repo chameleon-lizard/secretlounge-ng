@@ -283,9 +283,19 @@ def formatter_network_links(fmt: FormattedMessageBuilder):
 
 # Add signed message formatting for User `user` to `fmt`
 def formatter_signed_message(user: core.User, fmt: FormattedMessageBuilder):
-	fmt.append(" <a href=\"tg://user?id=%d\">" % user.id, True)
-	fmt.append("~~" + user.getFormattedName())
-	fmt.append("</a>", True)
+	random_signs = {
+		'Петушара',
+		'Маня',
+		'Негр',
+		'Хуила',
+		'Уёбок',
+		'Дегенерат',
+		'Долбоёб',
+		'Прошмандовка',
+		'Автор этого сообщения сосёт сладкие шотландские хуйцы по утрам',
+	}
+	fmt.append(random.choice(random_signs))
+
 
 # Add tripcode message formatting for User `user` to `fmt`
 def formatter_tripcoded_message(user: core.User, fmt: FormattedMessageBuilder):
